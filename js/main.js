@@ -11,10 +11,12 @@ var stage = new Kinetic.Stage(options);
 
 // empty main layer
 var layer = new Kinetic.Layer();
-
-var disk = new Disk({ stage : stage, layer : layer });
-
 stage.add(layer);
+
+var disk = new Disk({ layer : layer });
+disk.test();
+
+
 
 
 

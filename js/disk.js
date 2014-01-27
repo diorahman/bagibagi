@@ -1,8 +1,11 @@
 // disk model
 
-// deps
+// deps to system
 var inherits = require("inherits");
 var Emitter = require("events").EventEmitter;
+
+// deps 
+var Partition = require("./partition");
 
 // expose
 module.exports = Disk;
@@ -23,24 +26,45 @@ function Disk(options){
   // extended : { size, label}
   //  `-- logical 1 .. n
 
+  this.on("change", this.refresh);
 }
 
 inherits(Disk, Emitter);
+
+Disk.prototype.refresh = function(){
+  console.log("refresh");
+  this.layer.draw();
+}
+
+Disk.prototype.addPartition = function(options) {
+  // primary or extended
+}
+
+Disk.prototype.primaryParts = function () {
+
+}
 
 Disk.prototype.test = function() {
 
   var rect = new Kinetic.Rect({
     x: 10,
     y: 10,
-    width: 50,
+    width: 200,
     height: 50,
-    fill: 'green',
+    fill: 'white',
     stroke: 'black',
-    strokeWidth: 4
+    strokeWidth: 1
   });
 
   this.layer.add(rect);
-  this.stage.draw();
+  this.emit("change");
+
+  var part = new Partition({ layer : this.layer });
+  var self = this;
+
+  part.on("change", function(obj){})
+  
+  this.emit("change");  
 };
 
 Disk.prototype.show = function(){
