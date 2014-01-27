@@ -1,0 +1,26 @@
+{
+  "name": "bagibagi",
+  "version": "0.0.1",
+  "description": "BagiBagi experimental disk partition frontend",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Dhi Aurrahman <diorahman@gmail.com>",
+  "license": "MIT",
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "main": "./js/main.js",
+  "browserify-shim": {
+    "kinetic": "global:Kinetic"
+  },
+  "devDependencies": {
+    "browserify": "~3.24.1",
+    "browserify-shim": "~3.2.2"
+  },
+  "dependencies": {
+    "inherits": "~2.0.1"
+  }
+}
